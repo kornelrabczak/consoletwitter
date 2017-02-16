@@ -8,6 +8,15 @@ public class RequestFactoryTest {
 
     private RequestFactory sut = new RequestFactory();
 
+    @Test(expected = IllegalArgumentException.class)
+    public void should_throw_exception_for_empty_request() {
+        // given
+        String emptyRequest = "";
+
+        // when
+        sut.createRequestFromString(emptyRequest);
+    }
+
     @Test
     public void should_create_query_request_for_user_tweet_list() {
         // given

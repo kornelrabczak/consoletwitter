@@ -14,11 +14,7 @@ public class RequestFactory {
     public Request createRequestFromString(String requestStringify) {
         final Matcher requestMatcher = REQUEST_PATTERN.matcher(requestStringify);
         if (requestMatcher.find()) {
-            final String userName = requestMatcher.group(USER_NAME);
-            final String command = requestMatcher.group(COMMAND);
-            final String commandParameter = requestMatcher.group(PARAMETER);
-
-            return buildRequest(userName, command, commandParameter);
+            return buildRequest(requestMatcher.group(USER_NAME), requestMatcher.group(COMMAND), requestMatcher.group(PARAMETER));
         }
         throw new IllegalArgumentException("CHANGE ME!");
     }
