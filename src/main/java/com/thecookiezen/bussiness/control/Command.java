@@ -1,15 +1,17 @@
-package com.thecookiezen.bussiness;
+package com.thecookiezen.bussiness.control;
 
 import java.util.Optional;
 
-public class Query implements Request {
+public class Command implements Request {
 
     private final String userName;
     private final String command;
+    private final String commandParameter;
 
-    public Query(String userName, String command) {
+    public Command(String userName, String command, String commandParameter) {
         this.userName = userName;
         this.command = command;
+        this.commandParameter = commandParameter;
     }
 
     @Override
@@ -24,6 +26,6 @@ public class Query implements Request {
 
     @Override
     public Optional<String> getCommandParameter() {
-        return Optional.empty();
+        return Optional.of(commandParameter);
     }
 }

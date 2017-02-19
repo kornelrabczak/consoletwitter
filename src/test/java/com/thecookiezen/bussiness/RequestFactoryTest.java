@@ -1,5 +1,7 @@
 package com.thecookiezen.bussiness;
 
+import com.thecookiezen.bussiness.boundary.RequestFactory;
+import com.thecookiezen.bussiness.control.Request;
 import org.junit.Test;
 
 import static org.assertj.core.api.AssertionsForInterfaceTypes.assertThat;

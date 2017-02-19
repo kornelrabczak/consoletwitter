@@ -1,4 +1,4 @@
-package com.thecookiezen.bussiness;
+package com.thecookiezen.bussiness.control;
 
 import java.util.Optional;
 

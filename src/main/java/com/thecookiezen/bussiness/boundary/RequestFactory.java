@@ -1,4 +1,8 @@
-package com.thecookiezen.bussiness;
+package com.thecookiezen.bussiness.boundary;
+
+import com.thecookiezen.bussiness.control.Request;
+import com.thecookiezen.bussiness.control.Command;
+import com.thecookiezen.bussiness.control.Query;
 
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
