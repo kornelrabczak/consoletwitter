@@ -35,7 +35,7 @@ public class GetUserTweetsTest {
     }
 
     @Test
-    public void should_print_all_users_tweets() {
+    public void should_print_users_tweets() {
         // given
         when(store.getTweetsByUserName("Bob")).thenReturn(Lists.newArrayList(
                 new Tweet("Bob", "It's my first tweet"),
@@ -47,6 +47,7 @@ public class GetUserTweetsTest {
         sut.execute(new Query("Bob", ""));
 
         // then
-        // TODO
+        assertThat(outContent.toString()).contains("It's my first tweet (0 seconds ago)",
+                "I love the weather today (0 seconds ago)", "Good game though. (0 seconds ago)");
     }
 }

@@ -7,6 +7,8 @@ import com.thecookiezen.bussiness.entity.Tweet;
 
 public class CreateNewTweet implements RequestHandler {
 
+    public static final String HANDLER_KEY = "->";
+
     private final TweetsStore store;
 
     public CreateNewTweet(TweetsStore store) {

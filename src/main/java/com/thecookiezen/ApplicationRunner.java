@@ -20,9 +20,9 @@ public class ApplicationRunner {
 
     private static final Printer printer = new SystemOutPrinter();
 
-    private static final Map<String, RequestHandler> commandHandlers = ImmutableMap.<String, RequestHandler>builder()
-            .put("->", new CreateNewTweet(store))
-            .put("", new GetUserTweets(store, printer::print))
+    private static final Map<String, RequestHandler> requestHandlers = ImmutableMap.<String, RequestHandler>builder()
+            .put(CreateNewTweet.HANDLER_KEY, new CreateNewTweet(store))
+            .put(GetUserTweets.HANDLER_KEY, new GetUserTweets(store, printer::print))
             .build();
 
     private final static RequestFactory requestFactory = new RequestFactory();
@@ -33,7 +33,7 @@ public class ApplicationRunner {
 
         while (scanner.hasNextLine()) {
             final Request requestFromString = requestFactory.createRequestFromString(scanner.nextLine());
-            commandHandlers.get(requestFromString.getCommand()).execute(requestFromString);
+            requestHandlers.get(requestFromString.getCommand()).execute(requestFromString);
         }
     }
 }

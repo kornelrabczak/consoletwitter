@@ -10,6 +10,8 @@ import java.util.function.Consumer;
 
 public class GetUserTweets implements RequestHandler {
 
+    public static final String HANDLER_KEY = "";
+
     private final TweetsStore store;
     private final Consumer<List<Tweet>> printer;
 
