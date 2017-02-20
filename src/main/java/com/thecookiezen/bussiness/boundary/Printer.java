@@ -8,4 +8,5 @@ public interface Printer {
 
     void print(List<Tweet> tweet);
 
+    void printMultipleUsersTweets(List<Tweet> tweets);
 }

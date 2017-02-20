@@ -3,20 +3,19 @@ package com.thecookiezen.infrastructure.handlers;
 import com.thecookiezen.bussiness.boundary.RequestHandler;
 import com.thecookiezen.bussiness.boundary.TweetsStore;
 import com.thecookiezen.bussiness.control.Request;
-import com.thecookiezen.bussiness.entity.Tweet;
 
-public class CreateNewTweet implements RequestHandler {
+public class FollowUser implements RequestHandler {
 
-    public static final String HANDLER_KEY = "->";
+    public static final String HANDLER_KEY = "follows";
 
     private final TweetsStore store;
 
-    public CreateNewTweet(TweetsStore store) {
+    public FollowUser(TweetsStore store) {
         this.store = store;
     }
 
     @Override
     public void execute(Request request) {
-        store.storeTweet(new Tweet(request.getUserName(), request.getCommandParameter().get()));
+        store.follow(request.getUserName(), request.getCommandParameter().get());
     }
 }

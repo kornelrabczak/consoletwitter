@@ -7,7 +7,9 @@ import com.thecookiezen.bussiness.boundary.RequestHandler;
 import com.thecookiezen.bussiness.boundary.TweetsStore;
 import com.thecookiezen.bussiness.control.Request;
 import com.thecookiezen.infrastructure.handlers.CreateNewTweet;
+import com.thecookiezen.infrastructure.handlers.FollowUser;
 import com.thecookiezen.infrastructure.handlers.GetUserTweets;
+import com.thecookiezen.infrastructure.handlers.GetUserWall;
 import com.thecookiezen.infrastructure.printer.SystemOutPrinter;
 import com.thecookiezen.infrastructure.store.InMemoryTweets;
 
@@ -23,6 +25,8 @@ public class ApplicationRunner {
     private static final Map<String, RequestHandler> requestHandlers = ImmutableMap.<String, RequestHandler>builder()
             .put(CreateNewTweet.HANDLER_KEY, new CreateNewTweet(store))
             .put(GetUserTweets.HANDLER_KEY, new GetUserTweets(store, printer::print))
+            .put(FollowUser.HANDLER_KEY, new FollowUser(store))
+            .put(GetUserWall.HANDLER_KEY, new GetUserWall(store, printer::printMultipleUsersTweets))
             .build();
 
     private final static RequestFactory requestFactory = new RequestFactory();

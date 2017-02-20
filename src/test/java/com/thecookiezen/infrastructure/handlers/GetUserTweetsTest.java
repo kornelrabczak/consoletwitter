@@ -20,7 +20,7 @@ public class GetUserTweetsTest {
 
     private final TweetsStore store = mock(TweetsStore.class);
 
-    private GetUserTweets sut = new GetUserTweets(store, list -> new SystemOutPrinter().print(list));
+    private final GetUserTweets sut = new GetUserTweets(store, list -> new SystemOutPrinter().print(list));
 
     private final ByteArrayOutputStream outContent = new ByteArrayOutputStream();
 
