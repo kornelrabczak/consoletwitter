@@ -29,7 +29,7 @@ public class RequestFactoryTest {
 
         // then
         assertThat(actual.getUserName()).isEqualTo("Bob");
-        assertThat(actual.getCommand()).isEmpty();
+        assertThat(actual.getCommandKey()).isEmpty();
         assertThat(actual.getCommandParameter()).isEmpty();
     }
 
@@ -43,7 +43,7 @@ public class RequestFactoryTest {
 
         // then
         assertThat(actual.getUserName()).isEqualTo("Bob");
-        assertThat(actual.getCommand()).isEqualTo("wall");
+        assertThat(actual.getCommandKey()).isEqualTo("wall");
         assertThat(actual.getCommandParameter()).isEmpty();
     }
 
@@ -57,8 +57,8 @@ public class RequestFactoryTest {
 
         // then
         assertThat(actual.getUserName()).isEqualTo("Bob");
-        assertThat(actual.getCommand()).isEqualTo("->");
-        assertThat(actual.getCommandParameter().get()).isEqualTo("Some tweet");
+        assertThat(actual.getCommandKey()).isEqualTo("->");
+        assertThat(actual.getCommandParameter()).isEqualTo("Some tweet");
     }
 
     @Test
@@ -71,8 +71,8 @@ public class RequestFactoryTest {
 
         // then
         assertThat(actual.getUserName()).isEqualTo("Bob");
-        assertThat(actual.getCommand()).isEqualTo("follows");
-        assertThat(actual.getCommandParameter().get()).isEqualTo("John");
+        assertThat(actual.getCommandKey()).isEqualTo("follows");
+        assertThat(actual.getCommandParameter()).isEqualTo("John");
     }
 
 }

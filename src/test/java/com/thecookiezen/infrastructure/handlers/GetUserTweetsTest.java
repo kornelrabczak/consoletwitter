@@ -2,7 +2,6 @@ package com.thecookiezen.infrastructure.handlers;
 
 import com.google.common.collect.Lists;
 import com.thecookiezen.bussiness.boundary.TweetsStore;
-import com.thecookiezen.bussiness.control.Query;
 import com.thecookiezen.bussiness.entity.Tweet;
 import com.thecookiezen.infrastructure.printer.SystemOutPrinter;
 import org.junit.After;
@@ -19,8 +18,6 @@ import static org.mockito.Mockito.when;
 public class GetUserTweetsTest {
 
     private final TweetsStore store = mock(TweetsStore.class);
-
-    private final GetUserTweets sut = new GetUserTweets(store, list -> new SystemOutPrinter().print(list));
 
     private final ByteArrayOutputStream outContent = new ByteArrayOutputStream();
 
@@ -44,7 +41,7 @@ public class GetUserTweetsTest {
         ));
 
         // when
-        sut.execute(new Query("Bob", ""));
+        new GetUserTweets("Bob").execute(store, new SystemOutPrinter());
 
         // then
         assertThat(outContent.toString()).contains("It's my first tweet (0 seconds ago)",

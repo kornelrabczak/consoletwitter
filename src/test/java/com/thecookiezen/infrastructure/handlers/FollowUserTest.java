@@ -1,7 +1,6 @@
 package com.thecookiezen.infrastructure.handlers;
 
 import com.thecookiezen.bussiness.boundary.TweetsStore;
-import com.thecookiezen.bussiness.control.Command;
 import com.thecookiezen.infrastructure.store.InMemoryTweets;
 import org.junit.Test;
 
@@ -19,16 +18,13 @@ public class FollowUserTest {
     
     @Test
     public void should_return_all_following_users_without_duplications() {
-        // given
-        String userName = "Bob";
-
         // when
-        new FollowUser(store).execute(new Command(userName, "", "Alice"));
-        new FollowUser(store).execute(new Command(userName, "", "John"));
-        new FollowUser(store).execute(new Command(userName, "", "Mike"));
-        new FollowUser(store).execute(new Command(userName, "", "Mike"));
+        new FollowUser("Bob", "Alice").execute(store);
+        new FollowUser("Bob", "John").execute(store);
+        new FollowUser("Bob", "Mike").execute(store);
+        new FollowUser("Bob", "Mike").execute(store);
 
         // then
-        assertThat(store.getFollowing(userName)).contains("Alice", "John", "Mike");
+        assertThat(store.getFollowing("Bob")).contains("Alice", "John", "Mike");
     }
 }

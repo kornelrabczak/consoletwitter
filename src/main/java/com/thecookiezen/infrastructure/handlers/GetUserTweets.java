@@ -1,28 +1,21 @@
 package com.thecookiezen.infrastructure.handlers;
 
-import com.thecookiezen.bussiness.boundary.RequestHandler;
+import com.thecookiezen.bussiness.boundary.Printable;
+import com.thecookiezen.bussiness.boundary.Printer;
 import com.thecookiezen.bussiness.boundary.TweetsStore;
-import com.thecookiezen.bussiness.control.Request;
-import com.thecookiezen.bussiness.entity.Tweet;
 
-import java.util.List;
-import java.util.function.Consumer;
-
-public class GetUserTweets implements RequestHandler {
+public class GetUserTweets implements Printable {
 
     public static final String HANDLER_KEY = "";
 
-    private final TweetsStore store;
-    private final Consumer<List<Tweet>> printer;
+    private final String userName;
 
-    public GetUserTweets(TweetsStore store, Consumer<List<Tweet>> printer) {
-        this.store = store;
-        this.printer = printer;
+    public GetUserTweets(String userName) {
+        this.userName = userName;
     }
 
     @Override
-    public void execute(Request query) {
-        final List<Tweet> tweetsByUserName = store.getTweetsByUserName(query.getUserName());
-        printer.accept(tweetsByUserName);
+    public void execute(TweetsStore store, Printer printer) {
+        printer.print(store.getTweetsByUserName(userName));
     }
 }

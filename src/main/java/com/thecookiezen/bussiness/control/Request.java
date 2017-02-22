@@ -1,12 +1,26 @@
 package com.thecookiezen.bussiness.control;
 
-import java.util.Optional;
+public class Request {
 
-public interface Request {
+    private final String userName;
+    private final String commandKey;
+    private final String commandParameter;
 
-    String getUserName();
+    public Request(String userName, String commandKey, String commandParameter) {
+        this.userName = userName;
+        this.commandKey = commandKey;
+        this.commandParameter = commandParameter;
+    }
 
-    String getCommand();
+    public String getUserName() {
+        return userName;
+    }
 
-    Optional<String> getCommandParameter();
+    public String getCommandKey() {
+        return commandKey;
+    }
+
+    public String getCommandParameter() {
+        return commandParameter;
+    }
 }

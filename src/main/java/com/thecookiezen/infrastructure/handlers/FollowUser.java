@@ -1,21 +1,22 @@
 package com.thecookiezen.infrastructure.handlers;
 
-import com.thecookiezen.bussiness.boundary.RequestHandler;
+import com.thecookiezen.bussiness.boundary.Executable;
 import com.thecookiezen.bussiness.boundary.TweetsStore;
-import com.thecookiezen.bussiness.control.Request;
 
-public class FollowUser implements RequestHandler {
+public class FollowUser implements Executable {
 
     public static final String HANDLER_KEY = "follows";
 
-    private final TweetsStore store;
+    private final String userName;
+    private final String followUser;
 
-    public FollowUser(TweetsStore store) {
-        this.store = store;
+    public FollowUser(String userName, String followUser) {
+        this.userName = userName;
+        this.followUser = followUser;
     }
 
     @Override
-    public void execute(Request request) {
-        store.follow(request.getUserName(), request.getCommandParameter().get());
+    public void execute(TweetsStore store) {
+        store.follow(userName, followUser);
     }
 }
