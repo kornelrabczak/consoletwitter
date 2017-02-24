@@ -1,4 +1,4 @@
-package com.thecookiezen.bussiness.boundary;
+package com.thecookiezen.infrastructure;
 
 import com.thecookiezen.bussiness.control.Request;
 
@@ -18,6 +18,6 @@ public class RequestFactory {
         if (requestMatcher.find()) {
             return new Request(requestMatcher.group(USER_NAME), requestMatcher.group(COMMAND), requestMatcher.group(PARAMETER));
         }
-        throw new IllegalArgumentException("CHANGE ME!");
+        return Request.EMPTY_REQUEST;
     }
 }

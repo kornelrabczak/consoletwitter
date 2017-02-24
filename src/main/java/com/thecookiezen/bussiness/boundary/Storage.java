@@ -4,7 +4,7 @@ import com.thecookiezen.bussiness.entity.Tweet;
 
 import java.util.List;
 
-public interface TweetsStore {
+public interface Storage {
 
     void storeTweet(Tweet tweet);
 

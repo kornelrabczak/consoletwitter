@@ -2,25 +2,27 @@ package com.thecookiezen.bussiness.control;
 
 public class Request {
 
-    private final String userName;
-    private final String commandKey;
-    private final String commandParameter;
+    public static final Request EMPTY_REQUEST = new Request("", "", "");
 
-    public Request(String userName, String commandKey, String commandParameter) {
+    private final String userName;
+    private final String command;
+    private final String additionalParameter;
+
+    public Request(String userName, String command, String additionalParameter) {
         this.userName = userName;
-        this.commandKey = commandKey;
-        this.commandParameter = commandParameter;
+        this.command = command;
+        this.additionalParameter = additionalParameter;
     }
 
     public String getUserName() {
         return userName;
     }
 
-    public String getCommandKey() {
-        return commandKey;
+    public String getCommand() {
+        return command;
     }
 
-    public String getCommandParameter() {
-        return commandParameter;
+    public String getAdditionalParameter() {
+        return additionalParameter;
     }
 }

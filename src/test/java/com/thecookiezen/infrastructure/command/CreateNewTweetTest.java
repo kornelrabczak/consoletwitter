@@ -1,6 +1,6 @@
-package com.thecookiezen.infrastructure.handlers;
+package com.thecookiezen.infrastructure.command;
 
-import com.thecookiezen.bussiness.boundary.TweetsStore;
+import com.thecookiezen.bussiness.boundary.Storage;
 import org.junit.Test;
 
 import static org.mockito.Matchers.anyObject;
@@ -10,7 +10,7 @@ import static org.mockito.Mockito.verify;
 
 public class CreateNewTweetTest {
 
-    private final TweetsStore store = mock(TweetsStore.class);
+    private final Storage store = mock(Storage.class);
 
     @Test
     public void should_add_new_tweet_from_request_to_storage() {

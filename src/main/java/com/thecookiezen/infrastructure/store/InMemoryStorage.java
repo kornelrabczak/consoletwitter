@@ -4,13 +4,13 @@ import com.google.common.collect.ArrayListMultimap;
 import com.google.common.collect.HashMultimap;
 import com.google.common.collect.Lists;
 import com.google.common.collect.SetMultimap;
-import com.thecookiezen.bussiness.boundary.TweetsStore;
+import com.thecookiezen.bussiness.boundary.Storage;
 import com.thecookiezen.bussiness.entity.Tweet;
 
 import java.util.List;
 import java.util.stream.Collectors;
 
-public class InMemoryTweets implements TweetsStore {
+public class InMemoryStorage implements Storage {
 
     private final ArrayListMultimap<String, Tweet> tweets = ArrayListMultimap.create();
 
@@ -28,7 +28,8 @@ public class InMemoryTweets implements TweetsStore {
 
     @Override
     public void follow(String userName, String follow) {
-        following.put(userName, follow);
+        if (!userName.equals(follow))
+            following.put(userName, follow);
     }
 
     @Override

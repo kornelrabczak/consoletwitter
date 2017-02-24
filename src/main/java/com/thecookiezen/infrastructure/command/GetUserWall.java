@@ -1,8 +1,8 @@
-package com.thecookiezen.infrastructure.handlers;
+package com.thecookiezen.infrastructure.command;
 
 import com.thecookiezen.bussiness.boundary.Printable;
 import com.thecookiezen.bussiness.boundary.Printer;
-import com.thecookiezen.bussiness.boundary.TweetsStore;
+import com.thecookiezen.bussiness.boundary.Storage;
 
 public class GetUserWall implements Printable {
 
@@ -15,7 +15,7 @@ public class GetUserWall implements Printable {
     }
 
     @Override
-    public void execute(TweetsStore store, Printer printer) {
+    public void execute(Storage store, Printer printer) {
         printer.printMultipleUsersTweets(store.getUserAndAllFollowingTweets(userName));
     }
 }

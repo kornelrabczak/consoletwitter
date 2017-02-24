@@ -1,7 +1,7 @@
-package com.thecookiezen.infrastructure.handlers;
+package com.thecookiezen.infrastructure.command;
 
 import com.thecookiezen.bussiness.boundary.Executable;
-import com.thecookiezen.bussiness.boundary.TweetsStore;
+import com.thecookiezen.bussiness.boundary.Storage;
 import com.thecookiezen.bussiness.entity.Tweet;
 
 public class CreateNewTweet implements Executable {
@@ -17,7 +17,7 @@ public class CreateNewTweet implements Executable {
     }
 
     @Override
-    public void execute(TweetsStore store) {
+    public void execute(Storage store) {
         store.storeTweet(new Tweet(userName, tweetMessage));
     }
 }

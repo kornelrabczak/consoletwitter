@@ -1,6 +1,6 @@
 package com.thecookiezen.bussiness;
 
-import com.thecookiezen.bussiness.boundary.RequestFactory;
+import com.thecookiezen.infrastructure.RequestFactory;
 import com.thecookiezen.bussiness.control.Request;
 import org.junit.Test;
 
@@ -10,13 +10,16 @@ public class RequestFactoryTest {
 
     private RequestFactory sut = new RequestFactory();
 
-    @Test(expected = IllegalArgumentException.class)
-    public void should_throw_exception_for_empty_request() {
+    @Test
+    public void should_return_empty_request_for_empty_string() {
         // given
         String emptyRequest = "";
 
         // when
-        sut.createRequestFromString(emptyRequest);
+        final Request actual = sut.createRequestFromString(emptyRequest);
+
+        // then
+        assertThat(actual).isEqualTo(Request.EMPTY_REQUEST);
     }
 
     @Test
@@ -29,8 +32,8 @@ public class RequestFactoryTest {
 
         // then
         assertThat(actual.getUserName()).isEqualTo("Bob");
-        assertThat(actual.getCommandKey()).isEmpty();
-        assertThat(actual.getCommandParameter()).isEmpty();
+        assertThat(actual.getCommand()).isEmpty();
+        assertThat(actual.getAdditionalParameter()).isEmpty();
     }
 
     @Test
@@ -43,8 +46,8 @@ public class RequestFactoryTest {
 
         // then
         assertThat(actual.getUserName()).isEqualTo("Bob");
-        assertThat(actual.getCommandKey()).isEqualTo("wall");
-        assertThat(actual.getCommandParameter()).isEmpty();
+        assertThat(actual.getCommand()).isEqualTo("wall");
+        assertThat(actual.getAdditionalParameter()).isEmpty();
     }
 
     @Test
@@ -57,8 +60,8 @@ public class RequestFactoryTest {
 
         // then
         assertThat(actual.getUserName()).isEqualTo("Bob");
-        assertThat(actual.getCommandKey()).isEqualTo("->");
-        assertThat(actual.getCommandParameter()).isEqualTo("Some tweet");
+        assertThat(actual.getCommand()).isEqualTo("->");
+        assertThat(actual.getAdditionalParameter()).isEqualTo("Some tweet");
     }
 
     @Test
@@ -71,8 +74,8 @@ public class RequestFactoryTest {
 
         // then
         assertThat(actual.getUserName()).isEqualTo("Bob");
-        assertThat(actual.getCommandKey()).isEqualTo("follows");
-        assertThat(actual.getCommandParameter()).isEqualTo("John");
+        assertThat(actual.getCommand()).isEqualTo("follows");
+        assertThat(actual.getAdditionalParameter()).isEqualTo("John");
     }
 
 }

@@ -29,9 +29,11 @@ public class Tweet {
 
     private String stringifyDuration() {
         final Duration between = Duration.between(createdAt, Instant.now());
-        if (between.getSeconds() > 59) {
-            return " (" + between.toMinutes() + " minutes ago)";
+        final long seconds = between.getSeconds();
+        if (seconds > 59) {
+            final long minutes = between.toMinutes();
+            return " (" + minutes + " minute" + ((minutes > 1) ? "s" : "") + " ago)";
         }
-        return " (" + between.getSeconds() + " seconds ago)";
+        return " (" + seconds + " second" + ((seconds > 1) ? "s" : "") + " ago)";
     }
 }

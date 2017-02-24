@@ -1,7 +1,7 @@
-package com.thecookiezen.infrastructure.handlers;
+package com.thecookiezen.infrastructure.command;
 
 import com.google.common.collect.Lists;
-import com.thecookiezen.bussiness.boundary.TweetsStore;
+import com.thecookiezen.bussiness.boundary.Storage;
 import com.thecookiezen.bussiness.entity.Tweet;
 import com.thecookiezen.infrastructure.printer.SystemOutPrinter;
 import org.junit.After;
@@ -17,7 +17,7 @@ import static org.mockito.Mockito.when;
 
 public class GetUserTweetsTest {
 
-    private final TweetsStore store = mock(TweetsStore.class);
+    private final Storage store = mock(Storage.class);
 
     private final ByteArrayOutputStream outContent = new ByteArrayOutputStream();
 
@@ -44,7 +44,7 @@ public class GetUserTweetsTest {
         new GetUserTweets("Bob").execute(store, new SystemOutPrinter());
 
         // then
-        assertThat(outContent.toString()).contains("It's my first tweet (0 seconds ago)",
-                "I love the weather today (0 seconds ago)", "Good game though. (0 seconds ago)");
+        assertThat(outContent.toString()).contains("It's my first tweet (0 second ago)",
+                "I love the weather today (0 second ago)", "Good game though. (0 second ago)");
     }
 }
