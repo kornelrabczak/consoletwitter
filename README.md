@@ -12,4 +12,4 @@ Simple console based application which simulates Twitter.
 ## Running application
 
     mvn clean package
-    mvn java -jar target/console-twitter-1.0-SNAPSHOT-jar-with-dependencies.jar
+    java -jar target/console-twitter-1.0-SNAPSHOT-jar-with-dependencies.jar
